@@ -17,4 +17,8 @@ public class MuzickApplication {
 	public static String hello(){
 		return "Hello World";
 	}
+	@GetMapping("/helloworld")
+	public static String world(){
+		return "Hello World";
+	}
 }
