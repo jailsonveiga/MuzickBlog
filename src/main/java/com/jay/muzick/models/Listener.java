@@ -1,35 +1,41 @@
-//all of our entity's
-//Represent a single entity
-//Tables in database
 package com.jay.muzick.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//let jpa spring-boot now that is part of database
+import javax.persistence.*;
+import java.util.Set;
+
 @Entity
 public class Listener {
 
     @Id
-    //automatic giving id, sql to generate id automatic
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // UUID
     private Long id;
     private String name;
     private Integer age;
+    // later we will add genre and user
+
+    @OneToMany(mappedBy = "listener", fetch = FetchType.LAZY) // match the variable name in the Entity class
+    @JsonIgnore
+    private Set<Note> notes;
 
     public Listener() {
     }
 
-    //Constructor
     public Listener(Long id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    //Getter and Setter
+    public Set<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Set<Note> notes) {
+        this.notes = notes;
+    }
+
     public Long getId() {
         return id;
     }
