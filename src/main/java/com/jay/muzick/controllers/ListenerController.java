@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,12 +46,12 @@ public class ListenerController {
     public ResponseEntity<?> getOneListener(@PathVariable Long id) {
 //       Listener listener = listenerRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-       Optional<Listener> maybeListener = listenerRepository.findById(id);
+        Optional<Listener> maybeListener = listenerRepository.findById(id);
 
-       if (maybeListener.isEmpty()) {
-           throw new ResponseStatusException((HttpStatus.OK));
-       }
+        if (maybeListener.isEmpty()) {
+            throw new ResponseStatusException((HttpStatus.OK));
+        }
 
-       return new ResponseEntity<>(maybeListener.get(), HttpStatus.OK);
+        return new ResponseEntity<>(maybeListener.get(), HttpStatus.OK);
     }
 }
