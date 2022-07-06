@@ -2,16 +2,16 @@ package com.jay.muzick.payloads.ApiResponse;
 
 public class Article {
 
-    private class source{
+    private class Source{
         private String id;
         private String name;
 
         //Default Constructor
-        public source() {
+        public Source() {
         }
 
         //Constructor
-        public source(String id, String name) {
+        public Source(String id, String name) {
             this.id = id;
             this.name = name;
         }
@@ -34,7 +34,7 @@ public class Article {
         }
     }
 
-    private String source;
+    private Source source;
     private String author;
     private String title;
     private String description;
@@ -46,7 +46,7 @@ public class Article {
     }
 
     //Constructor
-    public Article(String source, String author, String title, String description, String url, String urlToImage) {
+    public Article(Source source, String author, String title, String description, String url, String urlToImage) {
         this.source = source;
         this.author = author;
         this.title = title;
@@ -56,11 +56,11 @@ public class Article {
     }
 
     //Getter and Setter
-    public String getSource() {
+    public Source getSource() {
         return source;
     }
 
-    public void setSource(String source) {
+    public void setSource(Source source) {
         this.source = source;
     }
 
